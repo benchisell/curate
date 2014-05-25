@@ -1,0 +1,11 @@
+.navbar-default {
+	background-color: rgb(68,97,163);
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: white; 
+}
+
+.navbar-default .navbar-header > a {
+  color: white;
+}

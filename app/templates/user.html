@@ -1,0 +1,23 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="jumbotron">
+<div class="row">
+  <div class="col-md-4"><img src="{{user.avatar(256)}}"></div>
+  <div class="col-md-8">
+	  <h1>Hello, {{user.nickname}}!</h1>
+	  {% if user.about_me %}<p>{{user.about_me}}</p>{% endif %}
+	  {% if user.last_seen %}<p><i>Last seen on: {{user.last_seen}}</i></p>{% endif %}
+	  {% if user.id == g.user.id %}<p><a href="{{url_for('edit')}}">Edit</a></p>{% endif %}
+  </div>
+</div>
+</div>
+
+
+<hr>
+{% for post in posts %}
+	{% include 'post.html' %}
+{% endfor %}
+{% endblock %}
