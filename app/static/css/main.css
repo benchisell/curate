@@ -9,3 +9,7 @@
 .navbar-default .navbar-header > a {
   color: white;
 }
+
+.row {
+	margin-bottom: 20px;
+}
