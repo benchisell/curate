@@ -35,6 +35,13 @@
           <li><a href="/index">Home</a></li>
           {% if g.user.is_authenticated() %}
           <li><a href="{{ url_for('user', nickname = g.user.nickname) }}">Your Profile</a></li>
+          <li>
+            <form style="display: inline;" action="{{url_for('search')}}" method="post" name="search">
+              {{g.search_form.hidden_tag()}}
+              {{g.search_form.search(size=10)}}
+              <input class="btn btn-default" type="submit" value="Search">
+            </form>
+          </li>
           <li><a href="{{ url_for('logout') }}">Logout</a></li>
           {% endif %}
         </ul>
