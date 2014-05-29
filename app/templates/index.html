@@ -11,15 +11,17 @@
 	</div>
 	</div>
 
-	<div class = "row">
+	<div class = "row row-post">
 		
 		<form action="" method="post" name="post">
 			{{form.hidden_tag()}}
 		    <div class = "col-md-2">
-		    	<p>Say Something</p>
+		    	<p>Say Something:</p>
 		    </div>
 		    <div class = "col-md-2">
-		    	{{ form.post(size = 30, maxlength = 140) }}
+		    	<div>
+		    		{{ form.post(size = 40, maxlength = 140) }}
+		    	</div>
 		    </div>
 		    <div class = "col-md-2">
 		    	{% for error in form.errors.post %}

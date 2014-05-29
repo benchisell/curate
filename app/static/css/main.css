@@ -13,3 +13,22 @@
 .row {
 	margin-bottom: 20px;
 }
+
+.row-post {
+	background-color: rgb(68,97,163);
+	margin: 0px;
+	margin-bottom: 10px;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.row-post .col-md-2 > p {
+	color: white;
+	font-size: 20px;
+}
+
+.navbar-search {
+	margin-top: 6px;
+	margin-left: 100px;
+	float:none;
+}
