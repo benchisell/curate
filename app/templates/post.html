@@ -1,6 +1,13 @@
-<div class="row">
-	<div class="col-md-8">
-		<img src="{{post.author.avatar(64)}}">
-		<i><a href="{{url_for('user', nickname = post.author.nickname)}}">{{post.author.nickname}}</a> said {{momentjs(post.timestamp).fromNow()}}: </i> <strong>{{post.body}}</strong>
-	</div>
+<div class="post-container">
+		<div class="post-image">
+			<!--  <img src="../static/images/8.jpg" class="img-responsive"> -->
+			<!-- <img src="{{post.author.avatar(256)}}"> -->
+			<img src="{{post.image}}" class="img-responsive">
+		</div>
+		{% autoescape false %}
+		<div class='post-body'>
+			<i>{{ _('%(nickname)s :', nickname = '<a href="%s">%s</a>' % (url_for('user', nickname = post.author.nickname), post.author.nickname), when = momentjs(post.timestamp).fromNow()) }}</i> <strong>{{post.body}}</strong>
+		</div>
+		{% endautoescape %} 
 </div>
+

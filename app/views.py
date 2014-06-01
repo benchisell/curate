@@ -1,11 +1,11 @@
 from flask import render_template, flash, redirect, session, url_for, request, g
 from flask.ext.login import login_user, logout_user, current_user, login_required
-from app import app, db, lm, oid
+from app import app, db, lm, oid, babel
 from forms import LoginForm, EditForm, PostForm, SearchForm
 from models import User, ROLE_USER, ROLE_ADMIN, Post
 from datetime import datetime
 from forms import LoginForm, EditForm
-from config import POSTS_PER_PAGE, MAX_SEARCH_RESULTS
+from config import POSTS_PER_PAGE, MAX_SEARCH_RESULTS, LANGUAGES
 from emails import follower_notification
 
 
@@ -37,6 +37,7 @@ def after_login(resp):
         nickname = resp.nickname
         if nickname is None or nickname == "":
             nickname = resp.email.split('@')[0]
+        nickname = User.make_valid_nickname(nickname)
         nickname = User.make_unique_nickname(nickname)
         user = User(nickname = nickname, email = resp.email, role = ROLE_USER)
         db.session.add(user)
@@ -191,3 +192,7 @@ def follow(nickname):
     # ...
     follower_notification(user, g.user)
     return redirect(url_for('user', nickname = nickname))
+
+@babel.localeselector
+def get_locale():
+    return request.accept_languages.best_match(LANGUAGES.keys())

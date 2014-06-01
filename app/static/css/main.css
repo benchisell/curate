@@ -1,5 +1,5 @@
 .navbar-default {
-	background-color: rgb(68,97,163);
+	background-color: black;
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -10,9 +10,7 @@
   color: white;
 }
 
-.row {
-	margin-bottom: 20px;
-}
+
 
 .row-post {
 	background-color: rgb(68,97,163);
@@ -31,4 +29,17 @@
 	margin-top: 6px;
 	margin-left: 100px;
 	float:none;
+}
+
+.post-container {
+	margin: 0 auto;
+	max-width: 800px;
+}
+
+.post-image img {
+	width: 100%;
+}
+.post-body {
+	width: 100%;
+	padding: 10px;
 }

@@ -4,22 +4,22 @@
 {% block content %}
 
 <div class="jumbotron">
-<div class="row">
-  <div class="col-md-4"><img src="{{user.avatar(256)}}"></div>
-  <div class="col-md-8">
-	  <h1>Hello, {{user.nickname}}!</h1>
-	  {% if user.about_me %}<p>{{user.about_me}}</p>{% endif %}
-	  {% if user.last_seen %}<p><em>Last seen: {{momentjs(user.last_seen).calendar()}}</em></p>{% endif %}
-	  <p>{{user.followers.count()}} followers</p>
-	  {% if user.id == g.user.id %}
-	  	<p><a href="{{url_for('edit')}}">Edit</a></p>
-	  {% elif not g.user.is_following(user) %}
-	  	<a href="{{url_for('follow', nickname = user.nickname)}}">Follow</a>
-  	  {% else %}
-        <a href="{{url_for('unfollow', nickname = user.nickname)}}">Unfollow</a>
-	  {% endif %}
-  </div>
-</div>
+	<div class="row">
+	  <div class="col-md-4"><img src="{{user.avatar(256)}}"></div>
+	  <div class="col-md-8">
+		  <h1>Hello, {{user.nickname}}!</h1>
+		  {% if user.about_me %}<p>{{user.about_me}}</p>{% endif %}
+		  {% if user.last_seen %}<p><em>Last seen: {{momentjs(user.last_seen).calendar()}}</em></p>{% endif %}
+		  <p>{{user.followers.count()}} followers</p>
+		  {% if user.id == g.user.id %}
+		  	<p><a href="{{url_for('edit')}}">Edit</a></p>
+		  {% elif not g.user.is_following(user) %}
+		  	<a href="{{url_for('follow', nickname = user.nickname)}}">Follow</a>
+	  	  {% else %}
+	        <a href="{{url_for('unfollow', nickname = user.nickname)}}">Unfollow</a>
+		  {% endif %}
+	  </div>
+	</div>
 </div>
 
 

@@ -33,7 +33,7 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="/index">Home</a></li>
+          <li><a href="/index">{{ _('Home') }}</a></li>
           {% if g.user.is_authenticated() %}
           <li><a href="{{ url_for('user', nickname = g.user.nickname) }}">Your Profile</a></li>
           <li><a href="{{ url_for('logout') }}">Logout</a></li>
@@ -53,11 +53,9 @@
 
   <!-- Start Main body -->
   <div class="container">
-    <div class="row">
-       <div class="col-md-12">
+
             {% block content %}{% endblock %}
-       </div>
-    </div>
+
   </div> <!-- end main body -->
 
   </body>
