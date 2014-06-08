@@ -2,12 +2,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<body>
 <div class="jumbotron">
 	<div class="row">
-	  <div class="col-md-4"><img src="{{user.avatar(256)}}"></div>
+	  <div class="col-md-2"><img src="{{user.avatar(128)}}"></div>
+	  <div class="col-md-2">
+		  <h1>{{user.nickname}}</h1>
+	  </div>
 	  <div class="col-md-8">
-		  <h1>Hello, {{user.nickname}}!</h1>
 		  {% if user.about_me %}<p>{{user.about_me}}</p>{% endif %}
 		  {% if user.last_seen %}<p><em>Last seen: {{momentjs(user.last_seen).calendar()}}</em></p>{% endif %}
 		  <p>{{user.followers.count()}} followers</p>
@@ -22,6 +24,9 @@
 	</div>
 </div>
 
+{% if user.id == g.user.id %}
+	{% include 'submit_post.html' %}
+{% endif %}
 
 <hr>
 {% for post in posts.items %}
@@ -31,4 +36,5 @@
 {% if posts.has_prev %}<a href="{{ url_for('user', nickname = user.nickname, page = posts.prev_num) }}"><< Newer posts</a>{% else %}<< Newer posts{% endif %} | 
 {% if posts.has_next %}<a href="{{ url_for('user', nickname = user.nickname, page = posts.next_num) }}">Older posts >></a>{% else %}Older posts >>{% endif %}
 
+</body>
 {% endblock %}

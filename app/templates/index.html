@@ -1,39 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
+<body>
 <div class = "container">
 	<div class="jumbotron">
 		<div class="row">
-		  <div class="col-md-4"><img src="{{g.user.avatar(128)}}"></div>
+		  <!-- <div class="col-md-4"><img src="{{g.user.avatar(128)}}"></div> -->
 		  <div class="col-md-8">
-			  <h1>Hello, {{g.user.nickname}}!</h1>
+			  <p>Hello, {{g.user.nickname}}!</p>
 		  </div>
 		</div>
 	</div>
 
-	<div class = "row row-post">
-		
-		<form action="" method="post" name="post">
-			{{form.hidden_tag()}}
-		    <div class = "col-md-2">
-		    	<p>Say Something:</p>
-		    </div>
-		    <div class = "col-md-2">
-		    	<div>
-		    		{{ form.post(size = 40, maxlength = 140) }}
-		    	</div>
-		    </div>
-		    <div class = "col-md-2">
-		    	{% for error in form.errors.post %}
-	            <span style="color: red;">[{{error}}]</span><br>
-	            {% endfor %}
-		    </div>
-		    <div class="col-md-2">
-		    	<input type="submit" value="Post!" class = "btn btn-default"></td>
-		    </div>
-		</form>
-	</div>
-
+{% include 'submit_post.html' %}
 
 {% for post in posts.items %}
 	{% include 'post.html' %}
@@ -43,6 +22,7 @@
 {% if posts.has_next %}<a href="{{ url_for('index', page = posts.next_num) }}">Older posts >></a>{% else %}Older posts >>{% endif %}
 
 </div>
+</body>
 
 {% endblock %}
 

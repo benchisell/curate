@@ -1,0 +1,6 @@
+<ul class = "pull-right">
+   <form class="navbar-search" action="{{url_for('search')}}" method="post" name="search">
+     {{g.search_form.hidden_tag()}}
+     {{g.search_form.search(size=20,placeholder="Search",class="navbar-search")}}
+   </form>
+</ul>

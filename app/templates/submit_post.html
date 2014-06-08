@@ -1,0 +1,21 @@
+<div class = "row row-post">		
+	<form action="" method="post" name="post">
+		{{form.hidden_tag()}}
+	    <div class = "col-md-2">
+	    	<p>Add new post:</p>
+	    </div>
+	    <div class = "col-md-2">
+	    	<div>
+	    		{{ form.post(size = 40, maxlength = 140) }}
+	    	</div>
+	    </div>
+	    <div class = "col-md-2">
+	    	{% for error in form.errors.post %}
+            <span style="color: red;">[{{error}}]</span><br>
+            {% endfor %}
+	    </div>
+	    <div class="col-md-2">
+	    	<input type="submit" value="Post!" class = "btn btn-default"></td>
+	    </div>
+	</form>
+</div>

@@ -4,10 +4,20 @@
 			<!-- <img src="{{post.author.avatar(256)}}"> -->
 			<img src="{{post.image}}" class="img-responsive">
 		</div>
+		<div class="post-links">
+			<p>Shop the Image:  </p>
+			<ul>
+				<a href="http://www.mrporter.com/product/380753">Mismo Leather Satchel</a>
+				 | 
+				<a href="http://www.mrporter.com/product/338693">Richard James Shirt</a>
+				 | 
+				<a href="http://www.mrporter.com/product/398040">J-Crew Trousers</a>
+			</ul>
+		</div>
 		{% autoescape false %}
-		<div class='post-body'>
+		<div class="post-body">
 			<i>{{ _('%(nickname)s :', nickname = '<a href="%s">%s</a>' % (url_for('user', nickname = post.author.nickname), post.author.nickname), when = momentjs(post.timestamp).fromNow()) }}</i> <strong>{{post.body}}</strong>
 		</div>
-		{% endautoescape %} 
+		{% endautoescape %}
 </div>
 

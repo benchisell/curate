@@ -1,3 +1,7 @@
+body {
+	padding-top: 70px;
+}
+
 .navbar-default {
 	background-color: black;
 }
@@ -10,10 +14,15 @@
   color: white;
 }
 
-
+.jumbotron {
+  padding: 10px;
+  margin-bottom: 10px;
+  color: inherit;
+  background-color: #eee;
+}
 
 .row-post {
-	background-color: rgb(68,97,163);
+	background-color: black;
 	margin: 0px;
 	margin-bottom: 10px;
 	padding: 10px;
@@ -41,5 +50,24 @@
 }
 .post-body {
 	width: 100%;
-	padding: 10px;
+	display: inline;
+}
+
+.post-links {
+	width: 100%;	
+	display: inline-block;
+	padding-bottom: 5px;
+}
+
+.post-links p {
+	display: inline;
+	font-size: 12px; 
+	padding: 0px;
+}
+
+.post-links ul {
+	padding-left: 0px;
+	font-size: 12px;
+	display: inline;
+
 }

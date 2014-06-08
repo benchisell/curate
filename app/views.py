@@ -79,18 +79,26 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
-@app.route('/user/<nickname>')
-@app.route('/user/<nickname>/<int:page>')
+@app.route('/user/<nickname>', methods = ['GET', 'POST'])
+@app.route('/user/<nickname>/<int:page>', methods = ['GET', 'POST'])
 @login_required
 def user(nickname, page=1):
+    form = PostForm()
+    if form.validate_on_submit():
+        p = Post(body = form.post.data, timestamp = datetime.utcnow(), author = g.user)
+        db.session.add(p)
+        db.session.commit()
+        flash('Your post is now live!')
+        return redirect(url_for('user', nickname = nickname))
     user = User.query.filter_by(nickname = nickname).first()
     if user == None:
         flash('User ' + nickname + ' not found.')
         return redirect(url_for('index'))
-    posts = user.posts.paginate(page, POSTS_PER_PAGE, False)
+    posts = user.sorted_posts().paginate(page, POSTS_PER_PAGE, False)
     return render_template('user.html',
         user = user,
-        posts = posts)
+        posts = posts,
+        form = form)
 
 @app.before_request
 def before_request():
