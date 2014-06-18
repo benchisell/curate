@@ -90,9 +90,18 @@ class Post(db.Model):
     timestamp = db.Column(db.DateTime)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     image = db.Column(db.String(120), unique = True)
+    link1 = db.Column(db.String(120))
+    link2 = db.Column(db.String(120))
+    link3 = db.Column(db.String(120))
+    link1_text = db.Column(db.String(120))
+    link2_text = db.Column(db.String(120))
+    link3_text = db.Column(db.String(120))
 
     def __repr__(self):
         return '<Post %r>' % (self.body)
+
+    def all_posts(self):
+        return Post.query.all().order_by(Post.timestamp.desc())
 
 whooshalchemy.whoosh_index(app, Post)
 

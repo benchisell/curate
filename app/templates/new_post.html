@@ -1,3 +1,9 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+<h1 id="add-new-post">Add New Post</h1>
+
 <form action="" method="post" name="post">
 {{form.hidden_tag()}}
     <!-- Title -->
@@ -61,3 +67,5 @@
 	</div>
 </form>
 
+
+{% endblock %}

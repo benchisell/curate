@@ -193,14 +193,19 @@ def search_results(query):
         query = query,
         results = results)
 
-@app.route('/follow/<nickname>')
-@login_required
-def follow(nickname):
-    user = User.query.filter_by(nickname = nickname).first()
-    # ...
-    follower_notification(user, g.user)
-    return redirect(url_for('user', nickname = nickname))
-
 @babel.localeselector
 def get_locale():
     return request.accept_languages.best_match(LANGUAGES.keys())
+
+@app.route('/new_post', methods = ['GET', 'POST'])
+@login_required
+def new_post():
+    form = PostForm()
+    if form.validate_on_submit():
+        p = Post(body = form.post.data, timestamp = datetime.utcnow(), author = g.user, image = '/static/images/' + form.image.data, link1 = form.link1.data, link2 = form.link2.data, link3 = form.link3.data, link1_text = form.link1_text.data, link2_text = form.link2_text.data, link3_text = form.link3_text.data)
+        db.session.add(p)
+        db.session.commit()
+        flash('Your post is now live!')
+        return redirect(url_for('index'))
+    return render_template('new_post.html',
+        form = form)

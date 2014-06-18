@@ -1,6 +1,7 @@
 from flask.ext.wtf import Form
-from wtforms import TextField, BooleanField, TextAreaField
-from wtforms.validators import Required, Length
+from wtforms import TextField, BooleanField, TextAreaField, FileField
+from wtforms.validators import Required, Length, url
+from wtforms.fields.html5 import URLField
 from app.models import User
 
 
@@ -32,6 +33,14 @@ class EditForm(Form):
 
 class PostForm(Form):
     post = TextField('post', validators = [Required()])
+    image = FileField('image', validators = [Required()])
+    link1 = URLField(validators=[url()])
+    link2 = URLField(validators=[url()])
+    link3 = URLField(validators=[url()])
+    link1_text = TextField('link1_text', validators = [Required()])
+    link2_text = TextField('link2_text', validators = [Required()])
+    link3_text = TextField('link3_text', validators = [Required()])
+
 
 class SearchForm(Form):
     search = TextField('search', validators = [Required()])

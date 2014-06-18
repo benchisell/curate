@@ -2,25 +2,30 @@
 
 {% block content %}
 <body>
-<div class = "container">
-	<div class="jumbotron">
-		<div class="row">
-		  <!-- <div class="col-md-4"><img src="{{g.user.avatar(128)}}"></div> -->
-		  <div class="col-md-8">
-			  <p>Hello, {{g.user.nickname}}!</p>
-		  </div>
+<div class="col-md-10">
+
+	{% for post in posts.items %}
+		{% include 'post.html' %}
+	{% endfor %}
+
+	<div class="pagination">
+		<ul class="pager">
+			<li>{% if posts.has_prev %}<a href="{{ url_for('index', page = posts.prev_num) }}">Newer</a>{% endif %}</li>
+			<li>{% if posts.has_next %}<a href="{{ url_for('index', page = posts.next_num) }}">Older</a>{% endif %}</li>
+		</ul>
+	</div>
+</div>
+
+<div class="col-md-2">
+	<div class="sidebar">
+		<h3>Sidebar</h3>
+		<div class="container">
+			<p>Post</p>
+		</div>
+		<div class="container">
+			<p>Post 2</p>
 		</div>
 	</div>
-
-{% include 'submit_post.html' %}
-
-{% for post in posts.items %}
-	{% include 'post.html' %}
-{% endfor %}
-
-{% if posts.has_prev %}<a href="{{ url_for('index', page = posts.prev_num) }}"><< Newer posts</a>{% else %}<< Newer posts{% endif %} | 
-{% if posts.has_next %}<a href="{{ url_for('index', page = posts.next_num) }}">Older posts >></a>{% else %}Older posts >>{% endif %}
-
 </div>
 </body>
 
