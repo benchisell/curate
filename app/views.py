@@ -1,6 +1,6 @@
 from flask import render_template, flash, redirect, session, url_for, request, g
 from flask.ext.login import login_user, logout_user, current_user, login_required
-from app import app, db, lm, oid, babel
+from app import app, db, lm, oid
 from forms import LoginForm, EditForm, PostForm, SearchForm
 from models import User, ROLE_USER, ROLE_ADMIN, Post
 from datetime import datetime
@@ -55,24 +55,22 @@ def after_login(resp):
 @app.before_request
 def before_request():
     g.user = current_user
+    if g.user.is_authenticated():
+        g.user.last_seen = datetime.utcnow()
+        db.session.add(g.user)
+        db.session.commit()
+        g.search_form = SearchForm()
 
 @app.route('/', methods = ['GET', 'POST'])
 @app.route('/index', methods = ['GET', 'POST'])
 @app.route('/index/<int:page>', methods = ['GET', 'POST'])
-@login_required
 def index(page=1):
-    form = PostForm()
-    if form.validate_on_submit():
-        p = Post(body = form.post.data, timestamp = datetime.utcnow(), author = g.user)
-        db.session.add(p)
-        db.session.commit()
-        flash('Your post is now live!')
-        return redirect(url_for('index'))
-    posts = g.user.followed_posts().paginate(page, POSTS_PER_PAGE, False)
+    posts = Post.query.filter().order_by(Post.timestamp.desc()).paginate(page, POSTS_PER_PAGE, False)
+    """g.user.followed_posts().paginate(page, POSTS_PER_PAGE, False)"""
+    print posts
     return render_template('index.html',
         title = 'Home',
-        posts = posts,
-        form = form)
+        posts = posts)
 
 @app.route('/logout')
 def logout():
@@ -81,7 +79,6 @@ def logout():
 
 @app.route('/user/<nickname>', methods = ['GET', 'POST'])
 @app.route('/user/<nickname>/<int:page>', methods = ['GET', 'POST'])
-@login_required
 def user(nickname, page=1):
     form = PostForm()
     if form.validate_on_submit():
@@ -192,10 +189,6 @@ def search_results(query):
     return render_template('search_results.html',
         query = query,
         results = results)
-
-@babel.localeselector
-def get_locale():
-    return request.accept_languages.best_match(LANGUAGES.keys())
 
 @app.route('/new_post', methods = ['GET', 'POST'])
 @login_required

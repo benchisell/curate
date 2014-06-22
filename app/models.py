@@ -101,7 +101,7 @@ class Post(db.Model):
         return '<Post %r>' % (self.body)
 
     def all_posts(self):
-        return Post.query.all().order_by(Post.timestamp.desc())
+        return self.query.filter().order_by(Post.timestamp.desc())
 
 whooshalchemy.whoosh_index(app, Post)
 

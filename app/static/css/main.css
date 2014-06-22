@@ -22,10 +22,17 @@ body {
 	letter-spacing: 5px;
 }
 
-.navbar-search {
-	margin-top: 6px;
-	margin-left: 100px;
+.pull-right {
+	margin: 0px;
+	margin-top: 7px;
+}
+
+.form-control {
+	margin: 0px;
+	margin-top: 0px;
+	margin-left: 0px;
 	float:none;
+	padding: 0px;
 }
 
 /* Users */

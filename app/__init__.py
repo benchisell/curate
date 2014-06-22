@@ -17,8 +17,6 @@ lm.login_view = 'login'
 oid = OpenID(app, os.path.join(basedir, 'tmp'))
 mail = Mail(app)
 app.jinja_env.globals['momentjs'] = momentjs
-babel = Babel(app)
-
 
 if not app.debug:
     import logging

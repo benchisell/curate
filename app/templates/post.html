@@ -5,7 +5,7 @@
 				<h3>{{post.body}}</h3>
 			</div>
 			<div class="col-sm-2">
-				<h3>by {{ _('%(nickname)s', nickname = '<a href="%s">%s</a>' % (url_for('user', nickname = post.author.nickname), post.author.nickname), when = momentjs(post.timestamp).fromNow()) }}</h3> 
+				<h3>by <a href="{{ url_for('user', nickname = post.author.nickname) }}">{{post.author.nickname}}</a></h3> 
 			</div>
 		</div>
 		{% endautoescape %}
