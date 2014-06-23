@@ -1,0 +1,31 @@
+<div class="post-container">
+		{% autoescape false %}
+		<div class="post-body">
+			<div class="col-sm-10">
+				<h3>{{post.body}}</h3>
+			</div>
+			<div class="col-sm-2">
+				<h3>by <a href="{{ url_for('user', nickname = post.author.nickname) }}">{{post.author.nickname}}</a></h3> 
+			</div>
+		</div>
+		{% endautoescape %}
+		<div class="post-image">
+			<img src="{{post.image}}" class="img-responsive">
+		</div>
+		<div class="post-links">
+			<div class = "col-sm-2">
+				<p>Shop the Image:  </p>
+			</div>
+			<div class="col-sm-10">
+				<ul>
+					<a href="{{post.link1}}" target="_blank">{{post.link1_text}}</a>
+					 | 
+					<a href="{{post.link2}}" target="_blank">{{post.link2_text}}</a>
+					 | 
+					<a href="{{post.link3}}" target="_blank">{{post.link3_text}}</a>
+				</ul>
+			</div>
+		</div>
+</div>
+<hr>
+

@@ -1,0 +1,126 @@
+body {
+	padding-top: 70px;
+}
+
+/*Navbar*/
+
+
+.navbar-default {
+	background-color: black;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: white; 
+}
+
+.navbar-default .navbar-header > a {
+  color: white;
+}
+
+.navbar-brand {
+	font-family: Lato;
+	letter-spacing: 5px;
+}
+
+.pull-right {
+	margin: 0px;
+	margin-top: 7px;
+}
+
+.form-control {
+	margin: 0px;
+	margin-top: 0px;
+	margin-left: 0px;
+	float:none;
+	padding: 0px;
+}
+
+/* Users */
+
+.jumbotron {
+  padding: 10px;
+  margin-bottom: 10px;
+  color: inherit;
+  background-color: #eee;
+}
+
+/* Add New Posts */
+.row-post {
+	margin: 0px;
+	margin-bottom: 25px;
+	padding: 0px;
+	border-radius: 5px;
+}
+
+.row-post > .col-md-2 > h3 {
+	margin-top: 0px;
+}
+
+#add-new-post {
+	margin-bottom: 50px;
+}
+
+
+/* Posts Styling */
+
+.post-container {
+	margin: 0 auto;
+	max-width: 800px;
+	margin-bottom: 15px;
+}
+
+.post-image img {
+	width: 100%;
+}
+
+.post-links {
+	width: 100%;	
+	padding: 0px;
+	font-size: 12px;
+	border-style: solid;
+    border-width: 0px;
+    display: inline-block;
+}
+
+.post-links > .col-sm-2 {
+	padding: 0px;
+	font-size: 14px;
+}
+
+.post-links > .col-sm-10 {
+	padding: 0px;
+	font-size: 14px;
+}
+
+.post-body {
+	width: 100%;
+	font-size: 12px;
+	float: left;
+	padding: 5px;
+}
+
+.post-image .hover { 
+    position: absolute;
+    z-index: 2;
+}
+
+.form-control {
+	margin-bottom: 5px;
+}
+
+/* Main */
+
+/* Sidebar */
+.sidebar {
+	border-left: 1px solid;
+	height: 100%;
+}
+
+
+/* Footer */
+
+.pagination {
+	margin: 0 auto;
+	max-width: 800px;
+	display: block;
+}

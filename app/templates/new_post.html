@@ -1,0 +1,71 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+<h1 id="add-new-post">Add New Post</h1>
+
+<form action="" method="post" name="post">
+{{form.hidden_tag()}}
+    <!-- Title -->
+	<div class = "row row-post">	
+	    <div class = "col-md-2">
+	    	<h3>Title</h3>
+	    </div>
+	    <div class = "col-md-4">
+	    	<div>
+	    		{{ form.post(size = 40, maxlength = 140, class = "form-control") }}
+	    	</div>
+	    </div>
+    </div>
+
+	<!-- Image -->
+	<div class = "row row-post">
+	    <div class = "col-md-2">
+			<h3>Image:</h3>
+	    </div>
+	    <div class = "col-md-6">
+	    	<div>
+	    		{{ form.image(size=40) }}
+	    	</div>
+	    </div>
+    </div>
+    <!-- LINKS -->
+	<div class = "row row-post">	
+	    <div class = "col-md-2">
+	    	<h3>Links</h3>
+	    </div>
+	    <div class = "col-md-3">
+	    	<div>
+	    		{{ form.link1(size = 30, maxlength = 140, placeholder="Link 1 URL", class = "form-control") }}
+	    		{{ form.link1_text(size = 30, maxlength = 140, placeholder="Link 1 Description", class = "form-control") }}
+	    	</div>
+	    </div>
+	     <div class = "col-md-3">
+	    	<div>
+	    		{{ form.link2(size = 30, maxlength = 140, placeholder="Link 2 URL", class = "form-control") }}
+	    		{{ form.link2_text(size = 30, maxlength = 140, placeholder="Link 2 Description", class = "form-control") }}
+	    	</div>
+	    </div>
+	     <div class = "col-md-3">
+	    	<div>
+	    		{{ form.link3(size = 30, maxlength = 140, placeholder="Link 3 URL", class = "form-control") }}
+	    		{{ form.link3_text(size = 30, maxlength = 140, placeholder="Link 3 Description", class = "form-control") }}
+	    	</div>
+	    </div>
+    </div>
+
+   <!-- Button -->
+    <div>
+	    <div class="col-md-2">
+	    	<input type="submit" value="Post!" class = "btn btn-default btn-block btn-lg"></td>
+	    </div>
+	    <div class = "col-md-2">
+	    	{% for error in form.errors.post %}
+	        <span style="color: red;">[{{error}}]</span><br>
+	        {% endfor %}
+	    </div>
+	</div>
+</form>
+
+
+{% endblock %}
