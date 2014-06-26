@@ -5,18 +5,22 @@
 <body>
 <div class="jumbotron">
 	<div class="row">
-	  <div class="col-md-2"><img src="{{user.avatar(128)}}"></div>
-	  <div class="col-md-5">
-		  <h1>{{user.nickname}}</h1>
+	  <div class="col-md-3">
+	  	<img src="{{user.avatar(200)}}">
+		</div>
+	  <div class="col-md-4">
+		  <h3>{{user.nickname}}</h3>
+		  {% if user.website %}<p><a href="http://{{user.website}}">{{user.website}}</a></p>{% endif %}
+		  {% if user.about_me %}<p>{{user.about_me}}</p>{% endif %}
 	  </div>
 	  <div class="col-md-5">
-		  {% if user.about_me %}<p>{{user.about_me}}</p>{% endif %}
-		  {% if user.last_seen %}<p><em>Last seen: {{momentjs(user.last_seen).calendar()}}</em></p>{% endif %}
 		  <p>{{user.followers.count()}} followers</p>
 		  {% if g.user.is_authenticated() %}
 				{% if user.id == g.user.id %}
-			  	<p><a href="{{url_for('edit')}}">Edit</a></p>
-			  	<p><a href="{{url_for('new_post')}}">New Post</a></p>
+			  	<ul>
+				  	<p><a href="{{url_for('edit')}}">Edit</a></p>
+				  	<p><a href="{{url_for('new_post')}}">New Post</a></p>
+			  	</ul>
 			  {% elif not g.user.is_following(user) %}
 			  	<a href="{{url_for('follow', nickname = user.nickname)}}">Follow</a>
 		  	  {% else %}

@@ -4,7 +4,6 @@ body {
 
 /*Navbar*/
 
-
 .navbar-default {
 	background-color: black;
 }
@@ -42,6 +41,11 @@ body {
   margin-bottom: 10px;
   color: inherit;
   background-color: #eee;
+  border-radius: 0px;
+}
+
+.jumbotron > .row > .col-md-5 > p {
+	font-size: 20px;
 }
 
 /* Add New Posts */
