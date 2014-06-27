@@ -5,11 +5,8 @@ from forms import LoginForm, EditForm, PostForm, SearchForm
 from models import User, ROLE_USER, ROLE_ADMIN, Post
 from datetime import datetime
 from forms import LoginForm, EditForm
-<<<<<<< HEAD
 from config import POSTS_PER_PAGE, MAX_SEARCH_RESULTS, LANGUAGES, WHOOSH_ENABLED
-=======
 from config import POSTS_PER_PAGE, MAX_SEARCH_RESULTS, LANGUAGES
->>>>>>> aaed806d81522505a175322bbd7e00c42a719461
 from emails import follower_notification
 
 
@@ -64,10 +61,8 @@ def before_request():
         db.session.add(g.user)
         db.session.commit()
         g.search_form = SearchForm()
-<<<<<<< HEAD
     g.search_enabled = WHOOSH_ENABLED
-=======
->>>>>>> aaed806d81522505a175322bbd7e00c42a719461
+
 
 @app.route('/', methods = ['GET', 'POST'])
 @app.route('/index', methods = ['GET', 'POST'])
@@ -121,10 +116,7 @@ def edit():
     if form.validate_on_submit():
         g.user.nickname = form.nickname.data
         g.user.about_me = form.about_me.data
-<<<<<<< HEAD
         g.user.website = form.website.data
-=======
->>>>>>> aaed806d81522505a175322bbd7e00c42a719461
         db.session.add(g.user)
         db.session.commit()
         flash('Your changes have been saved.')
@@ -132,10 +124,7 @@ def edit():
     else:
         form.nickname.data = g.user.nickname
         form.about_me.data = g.user.about_me
-<<<<<<< HEAD
         form.website.data = g.user.website
-=======
->>>>>>> aaed806d81522505a175322bbd7e00c42a719461
     return render_template('edit.html',
         form = form)
 

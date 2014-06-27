@@ -18,11 +18,9 @@ oid = OpenID(app, os.path.join(basedir, 'tmp'))
 mail = Mail(app)
 app.jinja_env.globals['momentjs'] = momentjs
 
-<<<<<<< HEAD
+
 """if not app.debug:
-=======
 if not app.debug:
->>>>>>> aaed806d81522505a175322bbd7e00c42a719461
     import logging
     from logging.handlers import SMTPHandler
     credentials = None
@@ -41,7 +39,6 @@ if not app.debug:
     file_handler.setLevel(logging.INFO)
     app.logger.addHandler(file_handler)
     app.logger.info('microblog startup')
-<<<<<<< HEAD
 """
 
 if not app.debug and os.environ.get('HEROKU') is None:
@@ -60,8 +57,8 @@ if os.environ.get('HEROKU') is not None:
     app.logger.addHandler(stream_handler)
     app.logger.setLevel(logging.INFO)
     app.logger.info('microblog startup')
-=======
->>>>>>> aaed806d81522505a175322bbd7e00c42a719461
+
+
 
 
 

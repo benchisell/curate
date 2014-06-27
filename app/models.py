@@ -3,10 +3,7 @@ from hashlib import md5
 from app import app
 import flask.ext.whooshalchemy as whooshalchemy
 import re
-<<<<<<< HEAD
 from config import WHOOSH_ENABLED
-=======
->>>>>>> aaed806d81522505a175322bbd7e00c42a719461
 
 ROLE_USER = 0
 ROLE_ADMIN = 1
@@ -23,10 +20,7 @@ class User(db.Model):
     role = db.Column(db.SmallInteger, default = ROLE_USER)
     posts = db.relationship('Post', backref = 'author', lazy = 'dynamic')
     about_me = db.Column(db.String(140))
-<<<<<<< HEAD
     website = db.Column(db.String(140))
-=======
->>>>>>> aaed806d81522505a175322bbd7e00c42a719461
     last_seen = db.Column(db.DateTime)
     followed = db.relationship('User', 
         secondary = followers, 
@@ -111,12 +105,9 @@ class Post(db.Model):
     def all_posts(self):
         return self.query.filter().order_by(Post.timestamp.desc())
 
-<<<<<<< HEAD
 if WHOOSH_ENABLED:
     import flask.ext.whooshalchemy as whooshalchemy
     whooshalchemy.whoosh_index(app, Post)
-=======
 whooshalchemy.whoosh_index(app, Post)
->>>>>>> aaed806d81522505a175322bbd7e00c42a719461
 
 

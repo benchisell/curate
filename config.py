@@ -14,14 +14,11 @@ OPENID_PROVIDERS = [
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-<<<<<<< HEAD
 if os.environ.get('DATABASE_URL') is None:
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
 else:
     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
-=======
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
->>>>>>> aaed806d81522505a175322bbd7e00c42a719461
 SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
 
 # email server
@@ -42,11 +39,8 @@ POSTS_PER_PAGE = 3
 WHOOSH_BASE = os.path.join(basedir, 'search.db')
 MAX_SEARCH_RESULTS = 50
 
-<<<<<<< HEAD
 # Whoosh does not work on Heroku
 WHOOSH_ENABLED = os.environ.get('HEROKU') is None
-=======
->>>>>>> aaed806d81522505a175322bbd7e00c42a719461
 
 # ...
 # available languages
