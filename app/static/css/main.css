@@ -4,6 +4,10 @@ body {
 
 /*Navbar*/
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> aaed806d81522505a175322bbd7e00c42a719461
 .navbar-default {
 	background-color: black;
 }
@@ -41,11 +45,14 @@ body {
   margin-bottom: 10px;
   color: inherit;
   background-color: #eee;
+<<<<<<< HEAD
   border-radius: 0px;
 }
 
 .jumbotron > .row > .col-md-5 > p {
 	font-size: 20px;
+=======
+>>>>>>> aaed806d81522505a175322bbd7e00c42a719461
 }
 
 /* Add New Posts */

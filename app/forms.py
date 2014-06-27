@@ -12,7 +12,10 @@ class LoginForm(Form):
 class EditForm(Form):
     nickname = TextField('nickname', validators = [Required()])
     about_me = TextAreaField('about_me')
+<<<<<<< HEAD
     website = TextAreaField('website')
+=======
+>>>>>>> aaed806d81522505a175322bbd7e00c42a719461
 
     def __init__(self, original_nickname, *args, **kwargs):
         Form.__init__(self, *args, **kwargs)
